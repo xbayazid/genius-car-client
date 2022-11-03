@@ -5,7 +5,6 @@ import img3 from '../../../assets/images/banner/3.jpg'
 import img4 from '../../../assets/images/banner/4.jpg'
 import img5 from '../../../assets/images/banner/5.jpg'
 import img6 from '../../../assets/images/banner/6.jpg'
-import './Banner.css';
 import BannerItem from './BannerItem';
 
 const bannerData = [
@@ -49,15 +48,13 @@ const bannerData = [
 
 const Banner = () => {
     return (
-        <div className="carousel w-full">
+        <div className="carousel w-full py-10">
             {
                 bannerData.map(slide => <BannerItem
                 key={slide.id}
                 slide = {slide}
                 ></BannerItem>)
             }
-
-            {/* <BannerItem sliderImg={img1}></BannerItem> */}
 </div>
     );
 };
