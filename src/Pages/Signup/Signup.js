@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import singUpImg from '../../assets/images/login/login.svg';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Signup = () => {
+  const {createUser} = useContext(AuthContext)
+
     const handleSignUp = event =>{
         event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        createUser(email, password)
+        .then(result => {
+          const user  = result.user;
+          console.log(user)
+          form.reset()
+        })
+        .catch(error => console.error(error));
     }
+
     return (
         <div className="hero w-full my-20">
   <div className="hero-content grid gap-20 md:grid-cols-2 flex-col lg:flex-row">
@@ -19,19 +34,19 @@ const Signup = () => {
           <label className="label">
             <span className="label-text">Name</span>
           </label>
-          <input type="text" placeholder="Full Name" className="input input-bordered" />
+          <input type="text" name='name' placeholder="Full Name" className="input input-bordered" />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input type="text" placeholder="Email" className="input input-bordered" />
+          <input type="text" name='email' placeholder="Email" className="input input-bordered required" />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="text" placeholder="Password" className="input input-bordered" />
+          <input type="text" name='password' placeholder="Password" className="input input-bordered required" />
         </div>
         <div className="form-control mt-6">
             <input className="btn btn-primary" type="submit" value="Sign Up" />
