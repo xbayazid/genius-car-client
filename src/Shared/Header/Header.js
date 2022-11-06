@@ -7,6 +7,7 @@ const Header = () => {
     const menuItem = <>
     <li className='font-semibold'><Link to='/'>Home</Link></li>
     <li className='font-semibold'><Link to='/login'>Login</Link></li>
+    <li className='font-semibold'><Link to='/signup'>Sign Up</Link></li>
     </>
     return (
         <div className="navbar h-20 mb-12 pt-12 bg-base-100">
