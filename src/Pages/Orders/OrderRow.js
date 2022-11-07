@@ -9,6 +9,7 @@ const OrderRow = ({ order, handleDelete, handleStatusUpdate }) => {
       .then((res) => res.json())
       .then((data) => setOrderService(data));
   }, [service]);
+  
 
   return (
     <tr>
