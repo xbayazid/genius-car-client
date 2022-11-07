@@ -4,25 +4,22 @@ import loginImg from '../../../assets/images/login/login.svg'
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
-  const {signIn} = useContext(AuthContext);
-  const [error, setError] = useState('');
+  const {login} = useContext(AuthContext);
 
   const handleLogin = event =>{
-    event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
+      event.preventDefault();
+      const form = event.target;
+      const email = form.email.value;
+      const password = form.password.value;
 
-    signIn(email, password)
-    .then(result =>{
-      const user = result.user;
-      console.log(user)
-      form.reset();
-      setError('');
-    })
-    .catch(error => console.error(error));
-    setError(error.message);
+      login(email, password)
+      .then( result => {
+          const user = result.user;
+          console.log(user);
+      })
+      .then(error => console.log(error));
   }
+
     return (
         <div className="hero w-full my-20">
   <div className="hero-content grid gap-20 md:grid-cols-2 flex-col lg:flex-row">

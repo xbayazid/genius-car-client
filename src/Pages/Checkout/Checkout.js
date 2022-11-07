@@ -12,7 +12,8 @@ const Checkout = () => {
     event.preventDefault();
     const form = event.target;
     const name = `${form.firstName.value} ${form.lastName.value}`;
-    const email = user?.email || 'unregistered';
+    // const email = user?.email || 'unregistered';
+    const email = form.email.value;
     const phone = form.phone.value;
     const message = form.message.value;
 
@@ -56,7 +57,8 @@ const Checkout = () => {
         <input name="firstName" type="text" placeholder="First Name" className="input input-bordered w-full" />
             <input name="lastName" type="text" placeholder="Last Name" className="input input-bordered w-full" />
             <input name="phone" type="text" placeholder="Your Phone" className="input input-bordered w-full" required/>
-            <input name="email" type="text" placeholder="Your Email" defaultValue={user?.email} className="input input-bordered w-full" readOnly/>
+            {/* <input name="email" type="text" placeholder="Your Email" defaultValue={user?.email} className="input input-bordered w-full" readOnly/> */}
+            <input name="email" type="text" placeholder="Your Email" className="input input-bordered w-full" required/>
         </div>
         <textarea name="message" className="textarea textarea-bordered w-full mt-5 h-56" placeholder="Your Message" required></textarea>
         <input className="btn" type="submit" value="Place Your Order" />
